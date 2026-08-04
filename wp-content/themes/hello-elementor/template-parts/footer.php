@@ -55,10 +55,21 @@ if ( empty( $site_name ) ) {
 		<div class="footer-col">
 			<h4>Stay Connected</h4>
 			<p style="color:var(--ub-text-muted); font-size:13px; margin-bottom:12px;">Get weekly updates on urban fests & student deals.</p>
-			<form class="footer-newsletter-input" onsubmit="event.preventDefault(); alert('Thank you for subscribing to UrbanBeat!');">
-				<input type="email" placeholder="Enter your email" required aria-label="Email Address">
-				<button type="submit">Join</button>
+
+			<!-- Web3Forms Functional Newsletter Form -->
+			<form id="newsletter-form" class="footer-newsletter-input" novalidate>
+				<!-- ================================================================= -->
+				<!-- WEB3FORMS ACCESS KEY CONFIGURATION                                -->
+				<!-- Replace 'YOUR_WEB3FORMS_ACCESS_KEY_HERE' below with your key from https://web3forms.com/ -->
+				<!-- ================================================================= -->
+				<input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+				<input type="hidden" name="from_name" value="UrbanBeat Newsletter">
+				<input type="hidden" name="subject" value="New Newsletter Subscription - UrbanBeat">
+
+				<input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required aria-label="Email Address">
+				<button type="submit" id="newsletter-submit-btn">Join</button>
 			</form>
+			<div id="newsletter-form-message" style="display:none; font-size:12px; margin-top:8px;"></div>
 		</div>
 	</div>
 

@@ -1,9 +1,16 @@
 /**
- * UrbanBeat Frontend Script — Production & Performance Upgrades
+ * UrbanBeat Frontend Script & Web3Forms Integration
+ * Handles UI interactions and asynchronous form submissions.
  */
 
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
+
+  // ==========================================================================
+  // WEB3FORMS ACCESS KEY CONFIGURATION
+  // Replace 'YOUR_WEB3FORMS_ACCESS_KEY_HERE' below with your key from https://web3forms.com/
+  // ==========================================================================
+  const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY_HERE";
 
   // 1. Sticky Header Shrink on Scroll
   const header = document.querySelector('.site-header');
@@ -75,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
             behavior: 'smooth',
             block: 'start'
           });
-          // Close mobile menu if open
           if (navDropdown && navDropdown.style.display === 'block') {
             navDropdown.style.display = 'none';
             if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
@@ -103,6 +109,183 @@ document.addEventListener('DOMContentLoaded', function () {
         top: 0,
         behavior: 'smooth'
       });
+    });
+  }
+
+  // ==========================================================================
+  // WEB3FORMS FORM HANDLING & VALIDATION
+  // ==========================================================================
+
+  // Utility: Validate Email Address Format
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  // Utility: Display Feedback Messages for Contact Form
+  function showContactFeedback(element, text, type) {
+    if (!element) return;
+    element.textContent = text;
+    element.style.display = 'block';
+    if (type === 'success') {
+      element.style.borderColor = '#10b981';
+      element.style.backgroundColor = 'rgba(16, 185, 129, 0.15)';
+      element.style.color = '#34d399';
+    } else {
+      element.style.borderColor = '#ef4444';
+      element.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
+      element.style.color = '#f87171';
+    }
+  }
+
+  // Utility: Display Feedback Messages for Newsletter Form
+  function showNewsletterFeedback(element, text, isSuccess) {
+    if (!element) return;
+    element.textContent = text;
+    element.style.color = isSuccess ? '#34d399' : '#f87171';
+    element.style.display = 'block';
+  }
+
+  // A. Contact Form Web3Forms Handler
+  const contactForm = document.getElementById('contact-form');
+  const contactFormMessage = document.getElementById('contact-form-message');
+  const contactSubmitBtn = document.getElementById('contact-submit-btn');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('contact-name');
+      const emailInput = document.getElementById('contact-email');
+      const messageInput = document.getElementById('contact-message');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      // Reset feedback container
+      if (contactFormMessage) {
+        contactFormMessage.style.display = 'none';
+      }
+
+      // Client-side Validation
+      if (!name) {
+        showContactFeedback(contactFormMessage, 'Please enter your name.', 'error');
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      if (!email || !validateEmail(email)) {
+        showContactFeedback(contactFormMessage, 'Please enter a valid email address.', 'error');
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      if (!message) {
+        showContactFeedback(contactFormMessage, 'Please enter your message.', 'error');
+        if (messageInput) messageInput.focus();
+        return;
+      }
+
+      // Disable button & set loading state
+      const originalBtnText = contactSubmitBtn ? contactSubmitBtn.innerHTML : 'Send Message 🚀';
+      if (contactSubmitBtn) {
+        contactSubmitBtn.disabled = true;
+        contactSubmitBtn.innerHTML = 'Sending Message... ⏳';
+      }
+
+      try {
+        const formData = new FormData(contactForm);
+        
+        // Ensure access key falls back to WEB3FORMS_ACCESS_KEY if default string is used
+        if (!formData.get('access_key') || formData.get('access_key') === 'YOUR_WEB3FORMS_ACCESS_KEY_HERE') {
+          formData.set('access_key', WEB3FORMS_ACCESS_KEY);
+        }
+
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          showContactFeedback(contactFormMessage, '✨ Thank you! Your message has been sent successfully. We will reach out shortly.', 'success');
+          contactForm.reset();
+        } else {
+          showContactFeedback(contactFormMessage, data.message || 'Unable to send message. Please verify your Web3Forms Access Key.', 'error');
+        }
+      } catch (err) {
+        console.error('Contact form submission error:', err);
+        showContactFeedback(contactFormMessage, 'Network error. Please check your internet connection and try again.', 'error');
+      } finally {
+        if (contactSubmitBtn) {
+          contactSubmitBtn.disabled = false;
+          contactSubmitBtn.innerHTML = originalBtnText;
+        }
+      }
+    });
+  }
+
+  // B. Newsletter Form Web3Forms Handler
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterFormMessage = document.getElementById('newsletter-form-message');
+  const newsletterSubmitBtn = document.getElementById('newsletter-submit-btn');
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById('newsletter-email');
+      const email = emailInput ? emailInput.value.trim() : '';
+
+      if (newsletterFormMessage) {
+        newsletterFormMessage.style.display = 'none';
+      }
+
+      // Client-side Validation
+      if (!email || !validateEmail(email)) {
+        showNewsletterFeedback(newsletterFormMessage, 'Please enter a valid email address.', false);
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      // Disable button & set loading state
+      const originalBtnText = newsletterSubmitBtn ? newsletterSubmitBtn.innerHTML : 'Join';
+      if (newsletterSubmitBtn) {
+        newsletterSubmitBtn.disabled = true;
+        newsletterSubmitBtn.innerHTML = 'Joining...';
+      }
+
+      try {
+        const formData = new FormData(newsletterForm);
+        
+        if (!formData.get('access_key') || formData.get('access_key') === 'YOUR_WEB3FORMS_ACCESS_KEY_HERE') {
+          formData.set('access_key', WEB3FORMS_ACCESS_KEY);
+        }
+
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          showNewsletterFeedback(newsletterFormMessage, '🎉 Thanks for subscribing to UrbanBeat updates!', true);
+          newsletterForm.reset();
+        } else {
+          showNewsletterFeedback(newsletterFormMessage, data.message || 'Unable to subscribe. Please try again.', false);
+        }
+      } catch (err) {
+        console.error('Newsletter submission error:', err);
+        showNewsletterFeedback(newsletterFormMessage, 'Network error. Please try again.', false);
+      } finally {
+        if (newsletterSubmitBtn) {
+          newsletterSubmitBtn.disabled = false;
+          newsletterSubmitBtn.innerHTML = originalBtnText;
+        }
+      }
     });
   }
 });

@@ -138,25 +138,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<h2 class="ub-section-title">Have a Question or Want to Collaborate?</h2>
 	</div>
 	<div class="ub-contact-section">
-		<form class="wpcf7-form" onsubmit="event.preventDefault(); alert('Message sent successfully! UrbanBeat team will reach out shortly.');">
+		<!-- Web3Forms Functional Contact Form -->
+		<form id="contact-form" class="wpcf7-form" novalidate>
+			<!-- ================================================================= -->
+			<!-- WEB3FORMS ACCESS KEY CONFIGURATION                                -->
+			<!-- Replace 'YOUR_WEB3FORMS_ACCESS_KEY_HERE' below with your key from https://web3forms.com/ -->
+			<!-- ================================================================= -->
+			<input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+			<input type="hidden" name="from_name" value="UrbanBeat Platform">
+			<input type="hidden" name="subject" value="New Contact Form Submission - UrbanBeat">
+
 			<p>
-				<label style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Name (Required)</label>
-				<span class="wpcf7-form-control-wrap"><input type="text" class="wpcf7-text" placeholder="e.g. Alex Johnson" required></span>
+				<label for="contact-name" style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Name (Required)</label>
+				<span class="wpcf7-form-control-wrap"><input type="text" id="contact-name" name="name" class="wpcf7-text" placeholder="e.g. Alex Johnson" required></span>
 			</p>
 			<p>
-				<label style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Email Address (Required)</label>
-				<span class="wpcf7-form-control-wrap"><input type="email" class="wpcf7-text" placeholder="alex@company.com" required></span>
+				<label for="contact-email" style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Email Address (Required)</label>
+				<span class="wpcf7-form-control-wrap"><input type="email" id="contact-email" name="email" class="wpcf7-text" placeholder="alex@company.com" required></span>
 			</p>
 			<p>
-				<label style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Subject / Event Interest</label>
-				<span class="wpcf7-form-control-wrap"><input type="text" class="wpcf7-text" placeholder="e.g. Fest Partnership or Event RSVP"></span>
+				<label for="contact-subject" style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Subject / Event Interest</label>
+				<span class="wpcf7-form-control-wrap"><input type="text" id="contact-subject" name="subject" class="wpcf7-text" placeholder="e.g. Fest Partnership or Event RSVP"></span>
 			</p>
 			<p>
-				<label style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Message</label>
-				<span class="wpcf7-form-control-wrap"><textarea class="wpcf7-textarea" rows="4" placeholder="Tell us how we can help..."></textarea></span>
+				<label for="contact-message" style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Message (Required)</label>
+				<span class="wpcf7-form-control-wrap"><textarea id="contact-message" name="message" class="wpcf7-textarea" rows="4" placeholder="Tell us how we can help..." required></textarea></span>
 			</p>
+
+			<!-- Form Submission Feedback Message Container -->
+			<div id="contact-form-message" class="wpcf7-response-output" style="display:none; margin-bottom:20px;"></div>
+
 			<p>
-				<input type="submit" value="Send Message 🚀" class="wpcf7-submit">
+				<button type="submit" id="contact-submit-btn" class="wpcf7-submit">Send Message 🚀</button>
 			</p>
 		</form>
 	</div>

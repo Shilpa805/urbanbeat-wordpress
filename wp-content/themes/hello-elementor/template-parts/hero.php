@@ -1,0 +1,163 @@
+<?php
+/**
+ * Hero Banner & Stats Component — UrbanBeat Portfolio Upgrade
+ *
+ * @package HelloElementor
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
+
+<!-- Hero Banner -->
+<section id="hero" class="ub-hero-section">
+	<div class="ub-hero-badge">
+		<span></span> Official Inglu Internship Project Showcase
+	</div>
+
+	<h1 class="ub-hero-title">
+		Where Youth Culture Meets <span class="gradient-text">Unstoppable Energy</span>
+	</h1>
+
+	<p class="ub-hero-subtitle">
+		UrbanBeat is the ultimate youth community platform — curating college music festivals, live concert nights, street culture workshops, and student lifestyle deals.
+	</p>
+
+	<div class="ub-hero-actions">
+		<a href="#events" class="btn-primary">
+			⚡ Explore Fests & Events
+		</a>
+		<a href="#about" class="btn-secondary">
+			📖 Discover Our Story
+		</a>
+	</div>
+
+	<!-- Stats Grid -->
+	<div class="ub-stats-grid">
+		<div class="ub-stat-card">
+			<div class="ub-stat-number">10K+</div>
+			<div class="ub-stat-label">Active Youth Community</div>
+		</div>
+		<div class="ub-stat-card">
+			<div class="ub-stat-number">50+</div>
+			<div class="ub-stat-label">Campus Concerts & Fests</div>
+		</div>
+		<div class="ub-stat-card">
+			<div class="ub-stat-number">100+</div>
+			<div class="ub-stat-label">Artist Spotlights</div>
+		</div>
+		<div class="ub-stat-card">
+			<div class="ub-stat-number">4.9★</div>
+			<div class="ub-stat-label">Student Experience Rating</div>
+		</div>
+	</div>
+</section>
+
+<!-- About Section -->
+<section id="about" style="max-width:1100px; margin:0 auto 80px; padding:40px 24px; text-align:center;">
+	<div class="ub-section-title-wrap">
+		<div class="ub-section-subtitle">Who We Are</div>
+		<h2 class="ub-section-title">Empowering the Next Generation of Youth Talent</h2>
+	</div>
+	<p style="color:var(--ub-text-muted); font-size:1.15rem; max-width:800px; margin:0 auto; line-height:1.8;">
+		Born out of the <strong>Inglu Internship Program</strong>, UrbanBeat connects passionate students, indie musicians, and creative artists. We host immersive live music nights, dance battles, and creative workshops across top college campuses.
+	</p>
+</section>
+
+<!-- Featured Events Grid -->
+<section id="events" style="max-width:1280px; margin:0 auto 80px; padding:0 24px;">
+	<div class="ub-section-title-wrap">
+		<div class="ub-section-subtitle">Upcoming Fests & Highlights</div>
+		<h2 class="ub-section-title">Don't Miss the Vibe</h2>
+	</div>
+
+	<div class="ub-cards-grid">
+		<!-- Event Card 1 -->
+		<div class="ub-card">
+			<div class="ub-card-media">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event1.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80'" alt="Beat Street Festival">
+				<span class="ub-card-badge">Music Festival</span>
+			</div>
+			<div class="ub-card-body">
+				<div class="ub-card-meta">
+					📅 Aug 24, 2026 • 📍 City Arena
+				</div>
+				<h3 class="ub-card-title"><a href="#events">Beat Street Music Fest 2026</a></h3>
+				<p class="ub-card-desc">An explosive night of indie hip-hop, electronic beats, and live band performances featuring top campus artists.</p>
+				<div class="ub-card-footer">
+					<span style="color:var(--ub-cyan); font-weight:700;">FREE Entry for Students</span>
+					<a href="#contact" class="btn-primary" style="padding:6px 14px; font-size:13px;">RSVP Now</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Event Card 2 -->
+		<div class="ub-card">
+			<div class="ub-card-media">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event2.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'" alt="Urban Dance Showcase">
+				<span class="ub-card-badge">Dance & Culture</span>
+			</div>
+			<div class="ub-card-body">
+				<div class="ub-card-meta">
+					📅 Sep 05, 2026 • 📍 Inglu Stage
+				</div>
+				<h3 class="ub-card-title"><a href="#events">Urban Cypher & Dance Battle</a></h3>
+				<p class="ub-card-desc">Street dancers and hip-hop crews face off in an intense 1-on-1 battle for the ultimate campus trophy.</p>
+				<div class="ub-card-footer">
+					<span style="color:var(--ub-cyan); font-weight:700;">Prize Pool: $1,500</span>
+					<a href="#contact" class="btn-primary" style="padding:6px 14px; font-size:13px;">Register Crew</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Event Card 3 -->
+		<div class="ub-card">
+			<div class="ub-card-media">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event3.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'" alt="Acoustic Sunset Session">
+				<span class="ub-card-badge">Live Concert</span>
+			</div>
+			<div class="ub-card-body">
+				<div class="ub-card-meta">
+					📅 Sep 18, 2026 • 📍 Rooftop Lounge
+				</div>
+				<h3 class="ub-card-title"><a href="#events">Rooftop Acoustic Sessions</a></h3>
+				<p class="ub-card-desc">Chill sunset vibes with intimate acoustic sets, open mic sessions, and networking with student creators.</p>
+				<div class="ub-card-footer">
+					<span style="color:var(--ub-cyan); font-weight:700;">Limited 100 Seats</span>
+					<a href="#contact" class="btn-primary" style="padding:6px 14px; font-size:13px;">Book Spot</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Contact Form Section -->
+<section id="contact" style="padding:0 24px;">
+	<div class="ub-section-title-wrap">
+		<div class="ub-section-subtitle">Get In Touch</div>
+		<h2 class="ub-section-title">Have a Question or Want to Collaborate?</h2>
+	</div>
+	<div class="ub-contact-section">
+		<form class="wpcf7-form" onsubmit="event.preventDefault(); alert('Message sent successfully! UrbanBeat team will reach out shortly.');">
+			<p>
+				<label style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Name (Required)</label>
+				<span class="wpcf7-form-control-wrap"><input type="text" class="wpcf7-text" placeholder="e.g. Alex Johnson" required></span>
+			</p>
+			<p>
+				<label style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Email Address (Required)</label>
+				<span class="wpcf7-form-control-wrap"><input type="email" class="wpcf7-text" placeholder="alex@company.com" required></span>
+			</p>
+			<p>
+				<label style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Subject / Event Interest</label>
+				<span class="wpcf7-form-control-wrap"><input type="text" class="wpcf7-text" placeholder="e.g. Fest Partnership or Event RSVP"></span>
+			</p>
+			<p>
+				<label style="color:var(--ub-text-muted); font-size:14px; font-weight:600;">Your Message</label>
+				<span class="wpcf7-form-control-wrap"><textarea class="wpcf7-textarea" rows="4" placeholder="Tell us how we can help..."></textarea></span>
+			</p>
+			<p>
+				<input type="submit" value="Send Message 🚀" class="wpcf7-submit">
+			</p>
+		</form>
+	</div>
+</section>

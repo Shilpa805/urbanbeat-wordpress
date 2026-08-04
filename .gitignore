@@ -1,0 +1,18 @@
+# WordPress Git Ignore Configuration for UrbanBeat Project
+
+# Ignore core WordPress uploads cache and temporary files
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/plugins/
+!wp-content/plugins/index.php
+
+# Ignore OS & Editor metadata
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Preserve theme modifications & code
+!wp-content/themes/hello-elementor/

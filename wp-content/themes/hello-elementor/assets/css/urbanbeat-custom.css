@@ -1,0 +1,707 @@
+/* ==========================================================================
+   URBANBEAT — Custom Design System & Portfolio Styling
+   Created for Inglu Internship Project Enhancement
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Core Color Palette */
+  --ub-bg-dark: #090d16;
+  --ub-bg-card: rgba(22, 28, 45, 0.7);
+  --ub-bg-card-hover: rgba(30, 39, 62, 0.85);
+  --ub-border-glass: rgba(255, 255, 255, 0.12);
+  --ub-border-glow: rgba(99, 102, 241, 0.4);
+  
+  /* Brand Accents */
+  --ub-primary: #6366f1;
+  --ub-primary-hover: #4f46e5;
+  --ub-purple: #8b5cf6;
+  --ub-cyan: #06b6d4;
+  --ub-pink: #ec4899;
+  
+  /* Text & Surfaces */
+  --ub-text-main: #f3f4f6;
+  --ub-text-muted: #9ca3af;
+  --ub-text-subtle: #6b7280;
+  
+  /* Typography */
+  --ub-font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ub-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Effects */
+  --ub-glass-backdrop: blur(16px);
+  --ub-shadow-glow: 0 8px 32px 0 rgba(99, 102, 241, 0.2);
+  --ub-shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --ub-radius-lg: 16px;
+  --ub-radius-md: 12px;
+  --ub-radius-sm: 8px;
+  --ub-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Body Overrides */
+body {
+  background-color: var(--ub-bg-dark) !important;
+  color: var(--ub-text-main) !important;
+  font-family: var(--ub-font-body) !important;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ub-font-heading) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--ub-primary);
+  text-decoration: none;
+  transition: var(--ub-transition);
+}
+
+a:hover {
+  color: var(--ub-cyan);
+}
+
+/* ==========================================================================
+   Header & Navigation Styling
+   ========================================================================== */
+.site-header {
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  background: rgba(9, 13, 22, 0.8) !important;
+  backdrop-filter: var(--ub-glass-backdrop);
+  -webkit-backdrop-filter: var(--ub-glass-backdrop);
+  border-bottom: 1px solid var(--ub-border-glass);
+  padding: 16px 32px !important;
+  transition: var(--ub-transition);
+}
+
+.site-header.scrolled {
+  padding: 12px 32px !important;
+  box-shadow: var(--ub-shadow-glow);
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-title a {
+  font-family: var(--ub-font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, var(--ub-primary) 50%, var(--ub-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inglu-badge {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid var(--ub-border-glow);
+  color: #a78bfa;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: 8px;
+}
+
+.site-navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 28px;
+  align-items: center;
+}
+
+.site-navigation a {
+  color: var(--ub-text-muted) !important;
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+  padding: 6px 0;
+}
+
+.site-navigation a:hover,
+.site-navigation .current-menu-item > a {
+  color: #ffffff !important;
+}
+
+.site-navigation a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ub-primary), var(--ub-cyan));
+  transition: var(--ub-transition);
+  border-radius: 2px;
+}
+
+.site-navigation a:hover::after,
+.site-navigation .current-menu-item > a::after {
+  width: 100%;
+}
+
+.header-cta-btn {
+  background: linear-gradient(135deg, var(--ub-primary), var(--ub-purple));
+  color: #ffffff !important;
+  padding: 10px 22px;
+  border-radius: var(--ub-radius-md);
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+  transition: var(--ub-transition);
+}
+
+.header-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+  color: #ffffff !important;
+}
+
+/* Mobile Menu Button */
+.mobile-nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--ub-border-glass);
+  color: var(--ub-text-main);
+  padding: 8px 12px;
+  border-radius: var(--ub-radius-sm);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* ==========================================================================
+   Hero & Modern Component Blocks
+   ========================================================================== */
+.ub-hero-section {
+  position: relative;
+  padding: 100px 24px 80px;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ub-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 6px 16px;
+  border-radius: 999px;
+  color: #a5b4fc;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.ub-hero-badge span {
+  width: 8px;
+  height: 8px;
+  background: var(--ub-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--ub-cyan);
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.ub-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.2rem) !important;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  max-width: 900px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 20%, var(--ub-primary) 60%, var(--ub-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ub-hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--ub-text-muted);
+  max-width: 680px;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.ub-hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--ub-primary), var(--ub-purple));
+  color: #ffffff !important;
+  padding: 14px 32px;
+  border-radius: var(--ub-radius-md);
+  font-weight: 600;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+  transition: var(--ub-transition);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.55);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--ub-border-glass);
+  color: var(--ub-text-main) !important;
+  padding: 14px 32px;
+  border-radius: var(--ub-radius-md);
+  font-weight: 600;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--ub-transition);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+/* Stats Counter Banner */
+.ub-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 60px;
+}
+
+.ub-stat-card {
+  background: var(--ub-bg-card);
+  backdrop-filter: var(--ub-glass-backdrop);
+  -webkit-backdrop-filter: var(--ub-glass-backdrop);
+  border: 1px solid var(--ub-border-glass);
+  border-radius: var(--ub-radius-lg);
+  padding: 28px 20px;
+  text-align: center;
+  transition: var(--ub-transition);
+}
+
+.ub-stat-card:hover {
+  border-color: var(--ub-border-glow);
+  transform: translateY(-5px);
+  box-shadow: var(--ub-shadow-glow);
+}
+
+.ub-stat-number {
+  font-family: var(--ub-font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 4px;
+  background: linear-gradient(135deg, #ffffff, var(--ub-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ub-stat-label {
+  color: var(--ub-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Event Cards & Grid Systems
+   ========================================================================== */
+.ub-section-title-wrap {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ub-section-subtitle {
+  color: var(--ub-primary);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.ub-section-title {
+  font-size: 2.4rem !important;
+}
+
+.ub-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  max-width: 1280px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+}
+
+.ub-card {
+  background: var(--ub-bg-card);
+  backdrop-filter: var(--ub-glass-backdrop);
+  -webkit-backdrop-filter: var(--ub-glass-backdrop);
+  border: 1px solid var(--ub-border-glass);
+  border-radius: var(--ub-radius-lg);
+  overflow: hidden;
+  transition: var(--ub-transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.ub-card:hover {
+  background: var(--ub-bg-card-hover);
+  border-color: var(--ub-border-glow);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), var(--ub-shadow-glow);
+}
+
+.ub-card-media {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.ub-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.ub-card:hover .ub-card-media img {
+  transform: scale(1.08);
+}
+
+.ub-card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(9, 13, 22, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--ub-border-glass);
+  color: var(--ub-cyan);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.ub-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.ub-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ub-text-muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.ub-card-title {
+  font-size: 1.3rem !important;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.ub-card-title a {
+  color: #ffffff !important;
+}
+
+.ub-card-title a:hover {
+  color: var(--ub-primary) !important;
+}
+
+.ub-card-desc {
+  color: var(--ub-text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.ub-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--ub-border-glass);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   Contact Form 7 Modern Field Styling
+   ========================================================================== */
+.ub-contact-section {
+  max-width: 800px;
+  margin: 0 auto 80px;
+  padding: 40px;
+  background: var(--ub-bg-card);
+  backdrop-filter: var(--ub-glass-backdrop);
+  -webkit-backdrop-filter: var(--ub-glass-backdrop);
+  border: 1px solid var(--ub-border-glass);
+  border-radius: var(--ub-radius-lg);
+  box-shadow: var(--ub-shadow-card);
+}
+
+.wpcf7-form p {
+  margin-bottom: 20px;
+}
+
+.wpcf7-form-control-wrap {
+  display: block;
+  margin-top: 6px;
+}
+
+.wpcf7-text,
+.wpcf7-textarea,
+.wpcf7-select {
+  width: 100% !important;
+  background: rgba(9, 13, 22, 0.6) !important;
+  border: 1px solid var(--ub-border-glass) !important;
+  border-radius: var(--ub-radius-md) !important;
+  color: #ffffff !important;
+  padding: 14px 18px !important;
+  font-size: 15px !important;
+  font-family: var(--ub-font-body) !important;
+  transition: var(--ub-transition) !important;
+  box-sizing: border-box !important;
+}
+
+.wpcf7-text:focus,
+.wpcf7-textarea:focus,
+.wpcf7-select:focus {
+  outline: none !important;
+  border-color: var(--ub-primary) !important;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2) !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+}
+
+.wpcf7-submit {
+  width: 100% !important;
+  background: linear-gradient(135deg, var(--ub-primary), var(--ub-purple)) !important;
+  border: none !important;
+  color: #ffffff !important;
+  padding: 16px 32px !important;
+  border-radius: var(--ub-radius-md) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: var(--ub-transition) !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35) !important;
+}
+
+.wpcf7-submit:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.55) !important;
+}
+
+.wpcf7-response-output {
+  border-radius: var(--ub-radius-md) !important;
+  padding: 14px 20px !important;
+  border: 1px solid var(--ub-primary) !important;
+  background: rgba(99, 102, 241, 0.15) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Multi-Column Footer Styling
+   ========================================================================== */
+.site-footer {
+  background: #060911 !important;
+  border-top: 1px solid var(--ub-border-glass);
+  padding: 70px 32px 30px !important;
+  margin-top: 80px;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-brand p {
+  color: var(--ub-text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 14px;
+  max-width: 320px;
+}
+
+.footer-internship-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 8px 14px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--ub-radius-sm);
+  color: #c7d2fe;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.footer-col h4 {
+  font-size: 16px !important;
+  color: #ffffff !important;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 12px;
+}
+
+.footer-col a {
+  color: var(--ub-text-muted);
+  font-size: 14px;
+}
+
+.footer-col a:hover {
+  color: var(--ub-cyan);
+  padding-left: 4px;
+}
+
+.footer-newsletter-input {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.footer-newsletter-input input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--ub-border-glass);
+  border-radius: var(--ub-radius-sm);
+  padding: 10px 14px;
+  color: #ffffff;
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+.footer-newsletter-input button {
+  background: var(--ub-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--ub-radius-sm);
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--ub-transition);
+}
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ub-text-subtle);
+  font-size: 13px;
+}
+
+.back-to-top {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ub-text-main);
+  border: 1px solid var(--ub-border-glass);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--ub-transition);
+}
+
+.back-to-top:hover {
+  background: var(--ub-primary);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+/* Responsive Mobile Layouts */
+@media (max-width: 992px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-navigation {
+    display: none;
+  }
+  .mobile-nav-toggle {
+    display: block;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+  .ub-hero-title {
+    font-size: 2.2rem !important;
+  }
+  .ub-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

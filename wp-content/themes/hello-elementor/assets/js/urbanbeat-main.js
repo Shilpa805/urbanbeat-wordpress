@@ -1,24 +1,30 @@
 /**
- * UrbanBeat Main Frontend Interactions
- * Inglu Internship Portfolio Upgrade
+ * UrbanBeat Frontend Script — Production & Performance Upgrades
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('UrbanBeat frontend scripts initialized!');
+  'use strict';
 
-  // 1. Sticky Header Shrink & Blur Effect on Scroll
+  // 1. Sticky Header Shrink on Scroll
   const header = document.querySelector('.site-header');
   if (header) {
+    let ticking = false;
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 40) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          if (window.scrollY > 40) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
-    });
+    }, { passive: true });
   }
 
-  // 2. Mobile Navigation Toggle Drawer
+  // 2. Accessibility & Responsive Mobile Navigation Drawer
   const mobileToggle = document.querySelector('.mobile-nav-toggle');
   const navDropdown = document.querySelector('.site-navigation-dropdown');
 
@@ -26,12 +32,38 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileToggle.addEventListener('click', function () {
       const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
       mobileToggle.setAttribute('aria-expanded', !isExpanded);
-      navDropdown.classList.toggle('active');
-      navDropdown.style.display = isExpanded ? 'none' : 'block';
+      if (isExpanded) {
+        navDropdown.style.display = 'none';
+        navDropdown.setAttribute('aria-hidden', 'true');
+      } else {
+        navDropdown.style.display = 'block';
+        navDropdown.setAttribute('aria-hidden', 'false');
+      }
     });
   }
 
-  // 3. Smooth Scroll for Anchor Links
+  // 3. Intersection Observer Scroll Reveal Animations
+  const revealElements = document.querySelectorAll('.ub-hero-section, .ub-stat-card, .ub-card, .ub-section-title-wrap, .ub-contact-section');
+  
+  if ('IntersectionObserver' in window) {
+    revealElements.forEach(el => el.classList.add('ub-reveal'));
+    
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  }
+
+  // 4. Smooth Anchor Link Scrolling
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
@@ -43,23 +75,28 @@ document.addEventListener('DOMContentLoaded', function () {
             behavior: 'smooth',
             block: 'start'
           });
+          // Close mobile menu if open
+          if (navDropdown && navDropdown.style.display === 'block') {
+            navDropdown.style.display = 'none';
+            if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+          }
         }
       }
     });
   });
 
-  // 4. Back to Top Button Logic
+  // 5. Back to Top Button Handler
   const backToTopBtn = document.querySelector('.back-to-top');
   if (backToTopBtn) {
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 300) {
+      if (window.scrollY > 350) {
         backToTopBtn.style.opacity = '1';
         backToTopBtn.style.pointerEvents = 'auto';
       } else {
         backToTopBtn.style.opacity = '0';
         backToTopBtn.style.pointerEvents = 'none';
       }
-    });
+    }, { passive: true });
 
     backToTopBtn.addEventListener('click', function () {
       window.scrollTo({

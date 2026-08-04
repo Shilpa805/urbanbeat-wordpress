@@ -1,17 +1,16 @@
 /* ==========================================================================
-   URBANBEAT — Custom Design System & Portfolio Styling
-   Created for Inglu Internship Project Enhancement
+   URBANBEAT — Production Design System & High-Performance Stylesheet
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   /* Core Color Palette */
   --ub-bg-dark: #090d16;
-  --ub-bg-card: rgba(22, 28, 45, 0.7);
-  --ub-bg-card-hover: rgba(30, 39, 62, 0.85);
+  --ub-bg-card: rgba(22, 28, 45, 0.75);
+  --ub-bg-card-hover: rgba(30, 39, 62, 0.9);
   --ub-border-glass: rgba(255, 255, 255, 0.12);
-  --ub-border-glow: rgba(99, 102, 241, 0.4);
+  --ub-border-glow: rgba(99, 102, 241, 0.45);
   
   /* Brand Accents */
   --ub-primary: #6366f1;
@@ -26,12 +25,12 @@
   --ub-text-subtle: #6b7280;
   
   /* Typography */
-  --ub-font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --ub-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ub-font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ub-font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   
-  /* Effects */
+  /* Effects & Radius */
   --ub-glass-backdrop: blur(16px);
-  --ub-shadow-glow: 0 8px 32px 0 rgba(99, 102, 241, 0.2);
+  --ub-shadow-glow: 0 8px 32px 0 rgba(99, 102, 241, 0.25);
   --ub-shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   --ub-radius-lg: 16px;
   --ub-radius-md: 12px;
@@ -39,7 +38,15 @@
   --ub-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Base Body Overrides */
+/* Global Reset & Base Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--ub-bg-dark) !important;
   color: var(--ub-text-main) !important;
@@ -49,6 +56,17 @@ body {
   padding: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--ub-cyan) !important;
+  outline-offset: 3px !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -68,6 +86,23 @@ a:hover {
   color: var(--ub-cyan);
 }
 
+/* Skip to Content for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--ub-primary);
+  color: #ffffff !important;
+  padding: 12px 20px;
+  border-radius: var(--ub-radius-sm);
+  z-index: 10000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
 /* ==========================================================================
    Header & Navigation Styling
    ========================================================================== */
@@ -75,7 +110,7 @@ a:hover {
   position: sticky !important;
   top: 0;
   z-index: 1000;
-  background: rgba(9, 13, 22, 0.8) !important;
+  background: rgba(9, 13, 22, 0.85) !important;
   backdrop-filter: var(--ub-glass-backdrop);
   -webkit-backdrop-filter: var(--ub-glass-backdrop);
   border-bottom: 1px solid var(--ub-border-glass);
@@ -86,6 +121,7 @@ a:hover {
 .site-header.scrolled {
   padding: 12px 32px !important;
   box-shadow: var(--ub-shadow-glow);
+  background: rgba(9, 13, 22, 0.95) !important;
 }
 
 .header-inner {
@@ -185,24 +221,56 @@ a:hover {
   color: #ffffff !important;
 }
 
-/* Mobile Menu Button */
+.header-cta-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile Toggle */
 .mobile-nav-toggle {
   display: none;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--ub-border-glass);
   color: var(--ub-text-main);
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: var(--ub-radius-sm);
   cursor: pointer;
   font-size: 20px;
+  transition: var(--ub-transition);
+}
+
+.mobile-nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Mobile Drawer */
+.site-navigation-dropdown {
+  background: rgba(9, 13, 22, 0.98);
+  border-bottom: 1px solid var(--ub-border-glass);
+  padding: 20px 24px;
+}
+
+.site-navigation-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-navigation-dropdown li {
+  margin-bottom: 14px;
+}
+
+.site-navigation-dropdown a {
+  color: var(--ub-text-main) !important;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 /* ==========================================================================
-   Hero & Modern Component Blocks
+   Hero & Component Sections
    ========================================================================== */
 .ub-hero-section {
   position: relative;
-  padding: 100px 24px 80px;
+  padding: 90px 24px 70px;
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
@@ -253,7 +321,7 @@ a:hover {
 }
 
 .ub-hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--ub-text-muted);
   max-width: 680px;
   margin-bottom: 36px;
@@ -280,6 +348,7 @@ a:hover {
   gap: 10px;
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
   transition: var(--ub-transition);
+  cursor: pointer;
 }
 
 .btn-primary:hover {
@@ -299,6 +368,7 @@ a:hover {
   align-items: center;
   gap: 10px;
   transition: var(--ub-transition);
+  cursor: pointer;
 }
 
 .btn-secondary:hover {
@@ -422,7 +492,7 @@ a:hover {
   position: absolute;
   top: 14px;
   left: 14px;
-  background: rgba(9, 13, 22, 0.75);
+  background: rgba(9, 13, 22, 0.8);
   backdrop-filter: blur(8px);
   border: 1px solid var(--ub-border-glass);
   color: var(--ub-cyan);
@@ -507,7 +577,7 @@ a:hover {
 .wpcf7-textarea,
 .wpcf7-select {
   width: 100% !important;
-  background: rgba(9, 13, 22, 0.6) !important;
+  background: rgba(9, 13, 22, 0.7) !important;
   border: 1px solid var(--ub-border-glass) !important;
   border-radius: var(--ub-radius-md) !important;
   color: #ffffff !important;
@@ -523,8 +593,8 @@ a:hover {
 .wpcf7-select:focus {
   outline: none !important;
   border-color: var(--ub-primary) !important;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2) !important;
-  background: rgba(15, 23, 42, 0.8) !important;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25) !important;
+  background: rgba(15, 23, 42, 0.85) !important;
 }
 
 .wpcf7-submit {
@@ -546,12 +616,18 @@ a:hover {
   box-shadow: 0 10px 28px rgba(99, 102, 241, 0.55) !important;
 }
 
-.wpcf7-response-output {
-  border-radius: var(--ub-radius-md) !important;
-  padding: 14px 20px !important;
-  border: 1px solid var(--ub-primary) !important;
-  background: rgba(99, 102, 241, 0.15) !important;
-  color: #ffffff !important;
+/* ==========================================================================
+   Scroll Reveal Animations
+   ========================================================================== */
+.ub-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ub-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ==========================================================================
@@ -599,7 +675,6 @@ a:hover {
   font-size: 16px !important;
   color: #ffffff !important;
   margin-bottom: 20px;
-  position: relative;
 }
 
 .footer-col ul {
@@ -665,14 +740,15 @@ a:hover {
   background: rgba(255, 255, 255, 0.08);
   color: var(--ub-text-main);
   border: 1px solid var(--ub-border-glass);
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: var(--ub-transition);
+  font-size: 18px;
 }
 
 .back-to-top:hover {
@@ -681,10 +757,11 @@ a:hover {
   transform: translateY(-3px);
 }
 
-/* Responsive Mobile Layouts */
-@media (max-width: 992px) {
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 }
 
@@ -695,13 +772,26 @@ a:hover {
   .mobile-nav-toggle {
     display: block;
   }
-  .footer-inner {
-    grid-template-columns: 1fr;
+  .site-header {
+    padding: 14px 20px !important;
+  }
+  .ub-hero-section {
+    padding: 60px 16px 50px;
   }
   .ub-hero-title {
     font-size: 2.2rem !important;
   }
+  .ub-hero-subtitle {
+    font-size: 1.05rem;
+  }
   .ub-cards-grid {
     grid-template-columns: 1fr;
+    padding: 0 16px;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+  .ub-contact-section {
+    padding: 24px;
   }
 }

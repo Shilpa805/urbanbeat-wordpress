@@ -75,7 +75,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<!-- Event Card 1 -->
 		<div class="ub-card">
 			<div class="ub-card-media">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event1.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80'" alt="Beat Street Festival">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event1.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80'" alt="Beat Street Festival" loading="lazy" decoding="async">
 				<span class="ub-card-badge">Music Festival</span>
 			</div>
 			<div class="ub-card-body">
@@ -94,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<!-- Event Card 2 -->
 		<div class="ub-card">
 			<div class="ub-card-media">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event2.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'" alt="Urban Dance Showcase">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event2.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80'" alt="Urban Dance Showcase" loading="lazy" decoding="async">
 				<span class="ub-card-badge">Dance & Culture</span>
 			</div>
 			<div class="ub-card-body">
@@ -113,7 +113,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<!-- Event Card 3 -->
 		<div class="ub-card">
 			<div class="ub-card-media">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event3.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'" alt="Acoustic Sunset Session">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/event3.jpg' ); ?>" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'" alt="Acoustic Sunset Session" loading="lazy" decoding="async">
 				<span class="ub-card-badge">Live Concert</span>
 			</div>
 			<div class="ub-card-body">

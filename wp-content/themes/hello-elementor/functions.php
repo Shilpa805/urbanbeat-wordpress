@@ -232,10 +232,14 @@ if ( ! function_exists( 'hello_elementor_add_description_meta_tag' ) ) {
 add_action( 'wp_head', 'hello_elementor_add_description_meta_tag' );
 
 // Settings page
-require get_template_directory() . '/includes/settings-functions.php';
+if ( file_exists( get_template_directory() . '/includes/settings-functions.php' ) ) {
+	require_once get_template_directory() . '/includes/settings-functions.php';
+}
 
 // Header & footer styling option, inside Elementor
-require get_template_directory() . '/includes/elementor-functions.php';
+if ( file_exists( get_template_directory() . '/includes/elementor-functions.php' ) ) {
+	require_once get_template_directory() . '/includes/elementor-functions.php';
+}
 
 if ( ! function_exists( 'hello_elementor_customizer' ) ) {
 	// Customizer controls
@@ -248,7 +252,9 @@ if ( ! function_exists( 'hello_elementor_customizer' ) ) {
 			return;
 		}
 
-		require get_template_directory() . '/includes/customizer-functions.php';
+		if ( file_exists( get_template_directory() . '/includes/customizer-functions.php' ) ) {
+			require_once get_template_directory() . '/includes/customizer-functions.php';
+		}
 	}
 }
 add_action( 'init', 'hello_elementor_customizer' );

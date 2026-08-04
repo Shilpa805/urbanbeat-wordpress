@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // WEB3FORMS ACCESS KEY CONFIGURATION
   // Replace 'YOUR_WEB3FORMS_ACCESS_KEY_HERE' below with your key from https://web3forms.com/
   // ==========================================================================
-  const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY_HERE";
+  const WEB3FORMS_ACCESS_KEY = "fabc9056-0811-4b1b-af1d-2bd729ee5ea5";
 
   // 1. Sticky Header Shrink on Scroll
   const header = document.querySelector('.site-header');

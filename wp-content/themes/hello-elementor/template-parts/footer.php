@@ -62,7 +62,7 @@ if ( empty( $site_name ) ) {
 				<!-- WEB3FORMS ACCESS KEY CONFIGURATION                                -->
 				<!-- Replace 'YOUR_WEB3FORMS_ACCESS_KEY_HERE' below with your key from https://web3forms.com/ -->
 				<!-- ================================================================= -->
-				<input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+				<input type="hidden" name="access_key" value="fabc9056-0811-4b1b-af1d-2bd729ee5ea5">
 				<input type="hidden" name="from_name" value="UrbanBeat Newsletter">
 				<input type="hidden" name="subject" value="New Newsletter Subscription - UrbanBeat">
 

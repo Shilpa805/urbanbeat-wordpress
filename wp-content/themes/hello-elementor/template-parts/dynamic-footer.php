@@ -25,7 +25,7 @@ if ( empty( $site_name ) ) {
 			</div>
 			<p>Where youth culture comes alive. Curating music, campus fests, workshops, and creative urban lifestyle experiences.</p>
 			<div class="footer-internship-tag">
-				🎓 Developed during <strong>Inglu Internship</strong>
+				⚡ <strong>Youth Culture & Media Platform</strong>
 			</div>
 		</div>
 
@@ -47,7 +47,7 @@ if ( empty( $site_name ) ) {
 				<li><a href="#events">Beat Street Music</a></li>
 				<li><a href="#events">Campus Concerts</a></li>
 				<li><a href="#events">Artist Spotlights</a></li>
-				<li><a href="#contact">Inglu Perks</a></li>
+				<li><a href="#contact">Student Deals & Perks</a></li>
 			</ul>
 		</div>
 

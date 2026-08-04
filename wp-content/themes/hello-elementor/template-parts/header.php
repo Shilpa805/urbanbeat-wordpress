@@ -34,7 +34,7 @@ $header_nav_menu = wp_nav_menu( [
 					</a>
 				</div>
 			<?php endif; ?>
-			<span class="inglu-badge">Inglu Internship</span>
+			<span class="inglu-badge">Official Platform</span>
 		</div>
 
 		<!-- Main Desktop Navigation -->

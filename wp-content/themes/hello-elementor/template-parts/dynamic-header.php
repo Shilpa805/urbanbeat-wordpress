@@ -39,7 +39,7 @@ $header_mobile_nav_menu = wp_nav_menu( $menu_args ); // The same menu but separa
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr__( 'Home', 'hello-elementor' ); ?>" rel="home">
 						⚡ <?php echo esc_html( $site_name ); ?>
 					</a>
-					<span class="inglu-badge">Inglu Internship</span>
+					<span class="inglu-badge">Official Platform</span>
 				</div>
 			<?php endif;
 

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!-- Hero Banner -->
 <section id="hero" class="ub-hero-section">
 	<div class="ub-hero-badge">
-		<span></span> Official Inglu Internship Project Showcase
+		<span></span> Official Youth Culture & Event Discovery Platform
 	</div>
 
 	<h1 class="ub-hero-title">
@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<h2 class="ub-section-title">Empowering the Next Generation of Youth Talent</h2>
 	</div>
 	<p style="color:var(--ub-text-muted); font-size:1.15rem; max-width:800px; margin:0 auto; line-height:1.8;">
-		Born out of the <strong>Inglu Internship Program</strong>, UrbanBeat connects passionate students, indie musicians, and creative artists. We host immersive live music nights, dance battles, and creative workshops across top college campuses.
+		Born out of a passion for youth culture and live performance, UrbanBeat connects passionate students, indie musicians, and creative artists. We host immersive live music nights, dance battles, and creative workshops across top college campuses.
 	</p>
 </section>
 
@@ -99,7 +99,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 			<div class="ub-card-body">
 				<div class="ub-card-meta">
-					📅 Sep 05, 2026 • 📍 Inglu Stage
+					📅 Sep 05, 2026 • 📍 Main Arena Stage
 				</div>
 				<h3 class="ub-card-title"><a href="#events">Urban Cypher & Dance Battle</a></h3>
 				<p class="ub-card-desc">Street dancers and hip-hop crews face off in an intense 1-on-1 battle for the ultimate campus trophy.</p>

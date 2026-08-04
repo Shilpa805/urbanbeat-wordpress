@@ -1,54 +1,54 @@
 # ⚡ UrbanBeat — Youth Culture & Event Discovery Platform
 
-> **Project Case Study**: Built during the **Inglu Internship Program** (MERN / Full-Stack & WordPress Track).  
-> A high-performance, portfolio-quality WordPress platform featuring a modern glassmorphism design system, responsive card grids, sticky blur header, and clean mobile navigation.
+🌐 Live Demo:  
+https://urbanbeat-wordpress.vercel.app
+
+💻 GitHub Repository:  
+https://github.com/Shilpa805/urbanbeat-wordpress
 
 ---
 
-## 📸 Interface Preview & Architecture
+## 📖 Project Overview
 
-```
-+-------------------------------------------------------------------+
-| ⚡ UrbanBeat                     [Home] [About] [Events] [Contact] | (Sticky Glass Header)
-+-------------------------------------------------------------------+
-|  Official Youth Culture Platform                                  |
-|  WHERE YOUTH CULTURE MEETS UNSTOPPABLE ENERGY                     | (Hero Section)
-|  [⚡ Explore Fests & Events]  [📖 Discover Our Story]             |
-|                                                                   |
-|  [10K+ Community] [50+ Campus Fests] [100+ Spotlights] [4.9★]     | (Stats Grid)
-+-------------------------------------------------------------------+
-|  UPCOMING FESTS & HIGHLIGHTS                                       |
-|  +-------------------+  +-------------------+  +----------------+ |
-|  | Beat Street Fest  |  | Urban Cypher      |  | Rooftop Session| | (Event Cards)
-|  | [RSVP Now]        |  | [Register Crew]   |  | [Book Spot]    | |
-|  +-------------------+  +-------------------+  +----------------+ |
-+-------------------------------------------------------------------+
-|  GET IN TOUCH — Contact Form with floating labels & glow rings     |
-+-------------------------------------------------------------------+
-| ⚡ UrbanBeat | Quick Links | Community | Stay Connected            | (Multi-Column Footer)
-+-------------------------------------------------------------------+
-```
+Developed UrbanBeat during my internship at Inglu as a modern youth culture and event discovery platform. Built with modern HTML5, CSS3 glassmorphism design tokens, ES6+ JavaScript, and Web3Forms form backends, this project showcases clean responsive web engineering and portfolio-ready user experience design.
+
+---
+
+## 📸 Website Screenshots
+
+### Hero Section
+![UrbanBeat Hero Section](screenshots/hero.png)
+
+### Upcoming Events Section
+![UrbanBeat Events Section](screenshots/events.png)
+
+### Contact Form Section
+![UrbanBeat Contact Form Section](screenshots/contact.png)
+
+### Multi-Column Footer
+![UrbanBeat Footer Section](screenshots/footer.png)
 
 ---
 
 ## ✨ Features
 
-- 🎨 **Glassmorphism Dark UI**: Custom CSS design variables (`assets/css/urbanbeat-custom.css`) with glowing indigo/purple/cyan accents and `Outfit` / `Inter` Google Fonts.
+- 🎨 **Glassmorphism Dark Design System**: Custom CSS variables with glowing indigo/purple/cyan accents and `Outfit` / `Inter` Google Fonts.
 - ⚡ **Sticky Header & Mobile Drawer**: Header shrinks on scroll with `backdrop-filter: blur(16px)` and an accessible mobile toggle.
 - 🚀 **IntersectionObserver Animations**: Scroll-triggered section reveals (`.ub-reveal`) for smooth 60fps animations.
 - 📅 **Interactive Event Cards**: CSS Grid layout with image aspect ratios, category badges, and RSVP CTAs.
-- 📩 **Contact Form Styling**: Modern input fields targeting Contact Form 7 with focused glow rings.
+- 📩 **Web3Forms Asynchronous Submissions**: Contact form and newsletter forms submit asynchronously via `fetch()` API with client-side validation, loading indicators, and instant email delivery.
 - ♿ **WCAG Accessibility & Performance**: `<link rel="preconnect">` font hints, `loading="lazy"` images, keyboard `:focus-visible` rings, and ARIA landmarks.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Core Engine**: WordPress 6.8+ & PHP 8.2
-- **Theme Foundation**: `hello-elementor` (Customized with modular template parts)
-- **Styling**: Modern Vanilla CSS3 (Custom Properties, Glassmorphism, CSS Grid, Flexbox)
-- **Frontend Logic**: Vanilla JavaScript ES6+ (`urbanbeat-main.js`)
-- **Plugins**: Elementor Page Builder, Contact Form 7
+- **Frontend**: HTML5, Modern CSS3 (Custom Properties, Glassmorphism, CSS Grid, Flexbox), JavaScript ES6+
+- **Form Backend**: Web3Forms API
+  - Contact form submissions are powered by Web3Forms (`fetch()` API).
+  - Newsletter subscriptions are powered by Web3Forms (`fetch()` API).
+- **CMS / Theme Layer**: WordPress 6.8+ & PHP 8.2 (`hello-elementor` theme structure)
+- **Deployment**: Vercel & GitHub
 
 ---
 
@@ -57,28 +57,31 @@
 ```
 urbanbeat/
 ├── app/
-│   └── public/                       # WordPress Root Directory
+│   └── public/                       # WordPress & Static Project Root
+│       ├── screenshots/              # Project Screenshot Assets
+│       │   ├── hero.png
+│       │   ├── events.png
+│       │   ├── contact.png
+│       │   └── footer.png
 │       ├── wp-content/
 │       │   ├── themes/
-│       │   │   └── hello-elementor/  # Active Theme Directory
+│       │   │   └── hello-elementor/  # Theme Directory
 │       │   │       ├── assets/
 │       │   │       │   ├── css/
 │       │   │       │   │   └── urbanbeat-custom.css  # Design System & Utility Styles
 │       │   │       │   └── js/
-│       │   │       │       └── urbanbeat-main.js    # Scroll & Drawer Interactions
+│       │   │       │       └── urbanbeat-main.js    # Scroll, Drawer & Web3Forms JS
 │       │   │       ├── template-parts/
 │       │   │       │   ├── header.php         # Sticky Glass Header & Mobile Nav
-│       │   │       │   ├── footer.php         # Multi-Column Footer & Back-to-Top
+│       │   │       │   ├── footer.php         # Multi-Column Footer
 │       │   │       │   ├── hero.php           # Hero Banner, Stats Grid & Cards
 │       │   │       │   ├── single.php         # Page Content Template
 │       │   │       │   └── archive.php        # Blog & Event Archive Grid
 │       │   │       ├── functions.php          # Enqueue Script & Styles
-│       │   │       └── style.css              # Parent Theme Meta Header
-│       │   └── plugins/
-│       │       ├── contact-form-7/
-│       │       └── elementor/
-│       ├── .gitignore                        # WordPress Git Filter Rules
-│       ├── README.md                          # Project Case Study & Portfolio Guide
+│       │   │       └── style.css              # Theme Header Metadata
+│       ├── index.html                        # Native Production HTML Entry Point
+│       ├── .gitignore                        # Git Filter Rules
+│       ├── README.md                          # Project Documentation & Case Study
 │       └── wp-config.php                     # WordPress Configuration File
 ```
 
@@ -88,45 +91,19 @@ urbanbeat/
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/urbanbeat-wordpress.git
+   git clone https://github.com/Shilpa805/urbanbeat-wordpress.git
    ```
-2. **Move to Web Server Directory**:
-   - Place files inside your Local WP, XAMPP `htdocs`, or WampServer directory.
-3. **Database Configuration**:
-   - Import the database or update `wp-config.php` database credentials:
-     ```php
-     define( 'DB_NAME', 'local' );
-     define( 'DB_USER', 'root' );
-     define( 'DB_PASSWORD', 'root' );
-     define( 'DB_HOST', '127.0.0.1:10005' );
-     ```
-4. **Run Local Server**:
+2. **Run Local Server**:
    ```bash
    php -S 127.0.0.1:8000 -t ./app/public
    ```
-5. **Access in Browser**: Open `http://127.0.0.1:8000` or `http://urbanbeat.local`.
-
----
-
-## 🌐 Public Deployment Guide
-
-### Option 1: Free Sandbox Hosting on Pantheon.io (*Recommended for Live WP*)
-1. Sign up for a free account at [Pantheon.io](https://pantheon.io).
-2. Create a new WordPress site instance.
-3. Install **All-in-One WP Migration** plugin on `urbanbeat.local` and export `.wpress` file.
-4. Import `.wpress` file into your Pantheon site dashboard.
-5. Get your live URL (e.g. `https://dev-urbanbeat.pantheonsite.io`).
-
-### Option 2: Static Deployment on Vercel / Netlify
-1. Install **Simply Static** plugin on WordPress.
-2. Export site to static HTML/CSS/JS.
-3. Deploy static folder to Vercel or Netlify with 1-click.
+3. **Access in Browser**: Open `http://127.0.0.1:8000`.
 
 ---
 
 ## 📄 Resume & LinkedIn Showcase Snippet
 
 **Web Development Intern — Inglu**
-- Conceptualized & engineered **UrbanBeat**, a youth culture and event discovery platform serving 10,000+ prospective student users.
-- Designed a modern dark glassmorphism UI system using CSS custom properties, ES6+ JS, and responsive CSS Grid.
-- Refactored modular WordPress PHP templates (`header.php`, `hero.php`, `footer.php`), achieving 100% mobile responsiveness and WCAG accessibility compliance.
+- Developed UrbanBeat during my internship at Inglu as a modern youth culture and event discovery platform.
+- Designed a dark glassmorphism UI system using CSS custom properties, ES6+ JavaScript, and responsive CSS Grid.
+- Integrated Web3Forms API via `fetch()` for asynchronous contact form submissions and newsletter subscriptions with client-side validation and loading states.
